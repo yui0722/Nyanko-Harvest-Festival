@@ -48,6 +48,9 @@ var game = cc.Layer.extend({
     this.addChild(topLayer);
     cat = cc.Sprite.create(res.cat_png);
     topLayer.addChild(cat, 0);
+    basket1 = cc.Sprite.create(res.basket1_png);
+    basket1.setPosition(80,64)
+    cat.addChild(basket1,0)
     cat.setPosition(240, 64);
     this.schedule(this.addItem, 1);
     //タッチイベントのリスナー追加
