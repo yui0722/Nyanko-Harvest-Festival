@@ -88,7 +88,7 @@ var Item = cc.Sprite.extend({
       this.initWithFile(res.bomb_png);
       this.isBomb = true;
     } else {
-      this.initWithFile(res.strawberry_png);
+      this.initWithFile(res.apple_png);
       this.isBomb = false;
     }
   },

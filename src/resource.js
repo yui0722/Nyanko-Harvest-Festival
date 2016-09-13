@@ -1,10 +1,10 @@
 var res = {
-  bomb_png: "res/bomb.png",
-  cart_png: "res/cart.png",
-  strawberry_png: "res/strawberry.png",
+  bomb_png: "res/resources/S/bug.png",
+  cart_png: "res/resources/S/cat0.png",
+  apple_png: "res/resources/S/apple.png",
 //  leftbutton_png: "res/leftbutton.png",
 //  rightbutton_png: "res/rightbutton.png",
-  background_png: "res/background.png",
+  background_png: "res/resources/S/game_bg.png",
 //  touchorigin_png: "res/touchorigin.png",
 //  touchend_png: "res/touchend.png"
 };
