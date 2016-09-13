@@ -1,10 +1,12 @@
 var itemsLayer;
-var cart;
+var cat;
 var xSpeed = 0; //カートの移動速度
 
 var detectedX;　 //現在タッチしているX座標 end
 var savedX;　 //前回タッチしていたX座標 orizin
 var touching = false;　 //タッチ状況管理用flag
+
+var audioEngine;
 
 var gameScene = cc.Scene.extend({
   onEnter: function() {
@@ -12,6 +14,14 @@ var gameScene = cc.Scene.extend({
     gameLayer = new game();
     gameLayer.init();
     this.addChild(gameLayer);
+
+    //音楽再生エンジン
+    audioEngine = cc.audioEngine;
+    //bgm再生
+    if (!audioEngine.isMusicPlaying()) {
+      //audioEngine.playMusic("res/bgm_main.mp3", true);
+      audioEngine.playMusic(res.bgm_main, true);
+    }
   }
 });
 
@@ -36,9 +46,9 @@ var game = cc.Layer.extend({
     //ショッピングカートを操作するレイヤー
     topLayer = cc.Layer.create();
     this.addChild(topLayer);
-    cart = cc.Sprite.create(res.cart_png);
-    topLayer.addChild(cart, 0);
-    cart.setPosition(240, 24);
+    cat = cc.Sprite.create(res.cat_png);
+    topLayer.addChild(cat, 0);
+    cat.setPosition(240, 64);
     this.schedule(this.addItem, 1);
     //タッチイベントのリスナー追加
     cc.eventManager.addListener(touchListener, this);
@@ -69,12 +79,12 @@ var game = cc.Layer.extend({
       //detectedX変数が更新されても対応できるようにする
       savedX = detectedX;//移動中にタップの更新をしている
       if (xSpeed > 0) {
-        cart.setFlippedX(true);
+        cat.setFlippedX(true);
       }
       if (xSpeed < 0) {
-        cart.setFlippedX(false);
+        cat.setFlippedX(false);
       }
-      cart.setPosition(cart.getPosition().x + xSpeed, cart.getPosition().y);
+      cat.setPosition(cat.getPosition().x + xSpeed, cat.getPosition().y);
     }
   }
 
@@ -105,12 +115,12 @@ var Item = cc.Sprite.extend({
   update: function(dt) {
     //果物の処理　座標をチェックしてカートの接近したら
     if (this.getPosition().y < 35 && this.getPosition().y > 30 &&
-      Math.abs(this.getPosition().x - cart.getPosition().x) < 10 && !this.isBomb) {
+      Math.abs(this.getPosition().x - cat.getPosition().x) < 10 && !this.isBomb) {
       gameLayer.removeItem(this);
       console.log("FRUIT");
     }
     //爆弾の処理　座標をチェックしてカートの接近したら　フルーツより爆弾に当たりやすくしている
-    if (this.getPosition().y < 35 && Math.abs(this.getPosition().x - cart.getPosition().x) < 25 &&
+    if (this.getPosition().y < 35 && Math.abs(this.getPosition().x - cat.getPosition().x) < 25 &&
       this.isBomb) {
       gameLayer.removeItem(this);
       console.log("BOMB");
