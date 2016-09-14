@@ -74,6 +74,7 @@ var game = cc.Layer.extend({
       //差分でカートが右にいくか左にいくかを判断する
       if (deltaX > 0) {
         xSpeed = -2;
+        
       }
       if (deltaX < 0) {
         xSpeed = 2;
