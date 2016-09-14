@@ -74,7 +74,7 @@ var game = cc.Layer.extend({
       //差分でカートが右にいくか左にいくかを判断する
       if (deltaX > 0) {
         xSpeed = -2;
-        
+
       }
       if (deltaX < 0) {
         xSpeed = 2;
@@ -119,12 +119,14 @@ var Item = cc.Sprite.extend({
     this.scheduleUpdate();
   },
   update: function(dt) {
+
     //果物の処理　座標をチェックしてカートの接近したら
     if (this.getPosition().y < 35 && this.getPosition().y > 30 &&
       Math.abs(this.getPosition().x - cat.getPosition().x) < 10 && !this.isbug) {
       gameLayer.removeItem(this);
       console.log("FRUIT");
     }
+
     //爆弾の処理　座標をチェックしてカートの接近したら　フルーツより爆弾に当たりやすくしている
     if (this.getPosition().y < 35 && Math.abs(this.getPosition().x - cat.getPosition().x) < 25 &&
       this.isbug) {
@@ -132,7 +134,7 @@ var Item = cc.Sprite.extend({
       console.log("bug");
     }
     //地面に落ちたアイテムは消去
-    if (this.getPosition().y < -30) {
+    if (this.getPosition().y < 15) {
       gameLayer.removeItem(this)
     }
   }
