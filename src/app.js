@@ -47,9 +47,10 @@ var game = cc.Layer.extend({
     this.addChild(topLayer);
     cat = cc.Sprite.create(res.cat_png);
     basket = cc.Sprite.create(res.basket1_png);
-    topLayer.addChild(cat, 0);
-    basket.setPosition(cat.getPosition().x + 80,cat.getPosition().y + 64);
+    topLayer.addChild(cat, 5);
+    topLayer.addChild(basket, 0);
     cat.addChild(basket,0);
+    basket.setPosition(280,64);
     cat.setPosition(240, 64);
     this.schedule(this.addItem, 1);
     //タッチイベントのリスナー追加
@@ -99,11 +100,11 @@ var Item = cc.Sprite.extend({
     this._super();
     //ランダムに爆弾と果物を生成する
     if (Math.random() < 0.5) {
-      this.initWithFile(res.bomb_png);
-      this.isBomb = true;
+      this.initWithFile(res.bug_png);
+      this.isbug = true;
     } else {
       this.initWithFile(res.apple_png);
-      this.isBomb = false;
+      this.isbug = false;
     }
   },
   //アイテムが生成された後、描画されるときに実行
@@ -119,15 +120,15 @@ var Item = cc.Sprite.extend({
   update: function(dt) {
     //果物の処理　座標をチェックしてカートの接近したら
     if (this.getPosition().y < 35 && this.getPosition().y > 30 &&
-      Math.abs(this.getPosition().x - cat.getPosition().x) < 10 && !this.isBomb) {
+      Math.abs(this.getPosition().x - cat.getPosition().x) < 10 && !this.isbug) {
       gameLayer.removeItem(this);
       console.log("FRUIT");
     }
     //爆弾の処理　座標をチェックしてカートの接近したら　フルーツより爆弾に当たりやすくしている
     if (this.getPosition().y < 35 && Math.abs(this.getPosition().x - cat.getPosition().x) < 25 &&
-      this.isBomb) {
+      this.isbug) {
       gameLayer.removeItem(this);
-      console.log("BOMB");
+      console.log("bug");
     }
     //地面に落ちたアイテムは消去
     if (this.getPosition().y < -30) {

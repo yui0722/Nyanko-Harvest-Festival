@@ -1,5 +1,5 @@
 var res = {
-  bomb_png: "res/S/bug.png",
+  bug_png: "res/S/bug.png",
   cat_png: "res/S/cat0.png",
   cat1_png: "res/S/cat1.png",
   cat2_png: "res/S/cat2.png",
