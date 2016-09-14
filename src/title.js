@@ -10,7 +10,17 @@ var TitleLayer = cc.Layer.extend({
         this.addChild(sprite, 0);
 
         var sprite = cc.Sprite.create(res.start_png);
-        sprite.setPosition(size.width / 2, size.height / 6);
+        sprite.setPosition(size.width / 3, size.height / 6);
+        sprite.setScale(0.8);
+        this.addChild(sprite, 1);
+
+        var sprite = cc.Sprite.create(res.help_png);
+        sprite.setPosition(size.width / 1.2, size.height / 3);
+        sprite.setScale(0.8);
+        this.addChild(sprite, 1);
+
+        var sprite = cc.Sprite.create(res.ranking_png);
+        sprite.setPosition(size.width / 1.5, size.height / 6);
         sprite.setScale(0.8);
         this.addChild(sprite, 1);
 
@@ -37,12 +47,11 @@ var TitleScene = cc.Scene.extend({
         this._super();
 
         // 背景レイヤーをその場で作る
-/*
+
         var backgroundLayer = cc.Sprite.create(res.title_bg_png);
-        backgroundLayer.setPosition(size.width / 2, size.height / 6);
-        backgroundLayer.setScale(0.8);
+        backgroundLayer.setPosition(240,180);
         this.addChild(backgroundLayer);
-*/
+
         //ラベルとタップイベント取得
         var layer3 = new TitleLayer();
         this.addChild(layer3);

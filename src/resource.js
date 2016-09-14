@@ -8,6 +8,7 @@ var res = {
   title_png: "res/S/title_E.png",
   start_png:"res/S/title_start_1_J.png",
   help_png: "res/S/help_1.png",
+  ranking_png: "res/S/title_ranking_1_J.png",
 //  leftbutton_png: "res/leftbutton.png",
 //  rightbutton_png: "res/rightbutton.png",
   background_png: "res/S/game_bg.png",
