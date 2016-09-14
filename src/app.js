@@ -19,7 +19,6 @@ var gameScene = cc.Scene.extend({
     audioEngine = cc.audioEngine;
     //bgm再生
     if (!audioEngine.isMusicPlaying()) {
-      //audioEngine.playMusic("res/bgm_main.mp3", true);
       audioEngine.playMusic(res.bgm_main, true);
     }
   }
@@ -47,10 +46,10 @@ var game = cc.Layer.extend({
     topLayer = cc.Layer.create();
     this.addChild(topLayer);
     cat = cc.Sprite.create(res.cat_png);
+    basket = cc.Sprite.create(res.basket1_png);
     topLayer.addChild(cat, 0);
-    basket1 = cc.Sprite.create(res.basket1_png);
-    basket1.setPosition(80,64)
-    cat.addChild(basket1,0)
+    basket.setPosition(cat.getPosition().x + 80,cat.getPosition().y + 64);
+    cat.addChild(basket,0);
     cat.setPosition(240, 64);
     this.schedule(this.addItem, 1);
     //タッチイベントのリスナー追加
@@ -83,9 +82,11 @@ var game = cc.Layer.extend({
       savedX = detectedX;//移動中にタップの更新をしている
       if (xSpeed > 0) {
         cat.setFlippedX(true);
+        basket.setPosition(basket.getPosition().x / 2 , basket.getPosition().y);
       }
       if (xSpeed < 0) {
         cat.setFlippedX(false);
+        basket.setPosition(80,64);
       }
       cat.setPosition(cat.getPosition().x + xSpeed, cat.getPosition().y);
     }
