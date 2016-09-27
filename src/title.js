@@ -24,6 +24,11 @@ var TitleLayer = cc.Layer.extend({
         sprite.setScale(0.8);
         this.addChild(sprite, 1);
 
+        var sprite = cc.Sprite.create(res.dog_png);
+        sprite.setPosition(size.width / 20, size.height / 6);
+        sprite.setScale(0.8);
+        this.addChild(sprite, 1);
+
         // タップイベントリスナーを登録する
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
