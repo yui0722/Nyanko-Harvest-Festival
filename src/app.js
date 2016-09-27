@@ -87,11 +87,6 @@ var game = cc.Layer.extend({
         var timer = cc.Layer.create();
         timer.addChild(Timer_img,0);
         this.addChild(timer);
-
-        timerlabel_3 = new cc.LabelTTF("0" , "Arial", 25);
-        timerlabel_3.setPosition(cc.p(size.width * 0.11, size.height * 0.89));
-        timerlabel_3.fillStyle = "black";
-        this.addChild(timrelabel_3);
     },
     addItem: function() {
         var item = new Item();
