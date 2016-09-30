@@ -14,7 +14,7 @@ var score1 = 0;
 var score2 = 0;
 var score3 = 0;
 
-var time = 6;
+var time = 60;
 var timelabel;
 
 var audioEngine;
