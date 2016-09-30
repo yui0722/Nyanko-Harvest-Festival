@@ -1,34 +1,14 @@
 //title
-
-var TitleLayer = cc.Layer.extend({
+var time = 6;
+var gameoverLayer = cc.Layer.extend({
     ctor: function() {
         this._super();
         var size = cc.director.getWinSize();
         // 画像の追加
-        var sprite = cc.Sprite.create(res.title_png);
+        var sprite = cc.Sprite.create(res.gameover_png);
         sprite.setPosition(size.width / 2, size.height / 2);
         sprite.setScale(0.8);
         this.addChild(sprite, 0);
-
-        var sprite = cc.Sprite.create(res.start_png);
-        sprite.setPosition(size.width / 3, size.height / 6);
-        sprite.setScale(0.8);
-        this.addChild(sprite, 1);
-
-        var sprite = cc.Sprite.create(res.help_png);
-        sprite.setPosition(size.width / 1.2, size.height / 3);
-        sprite.setScale(0.8);
-        this.addChild(sprite, 1);
-
-        var sprite = cc.Sprite.create(res.ranking_png);
-        sprite.setPosition(size.width / 1.5, size.height / 6);
-        sprite.setScale(0.8);
-        this.addChild(sprite, 1);
-
-        var sprite = cc.Sprite.create(res.dog_png);
-        sprite.setPosition(size.width / 20, size.height / 6);
-        sprite.setScale(0.8);
-        this.addChild(sprite, 1);
 
         // タップイベントリスナーを登録する
         cc.eventManager.addListener({
@@ -45,10 +25,10 @@ var TitleLayer = cc.Layer.extend({
     },
     onTouchMoved: function(touch, event) {},
     onTouchEnded: function(touch, event) {
-        cc.director.runScene(new gameScene());
+        cc.director.runScene(new TitleScene());
     },
 });
-var TitleScene = cc.Scene.extend({
+var gameoverScene = cc.Scene.extend({
     onEnter: function() {
         this._super();
 
@@ -59,7 +39,7 @@ var TitleScene = cc.Scene.extend({
         this.addChild(backgroundLayer);
 
         //ラベルとタップイベント取得
-        var layer3 = new TitleLayer();
+        var layer3 = new gameoverLayer();
         this.addChild(layer3);
 
     }

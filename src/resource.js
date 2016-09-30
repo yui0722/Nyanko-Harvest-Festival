@@ -18,7 +18,8 @@ var res = {
   bgm_main: "res/resources/bgm.mp3",
   dog_png:"res/S/dog.png",
   game_counter_png : "res/S/game_counter.png",
-  Timer_png : "res/S/timeleft.png"
+  Timer_png : "res/S/timeleft.png",
+  gameover_png: "res/S/game_gameover.png",
 };
 
 var g_resources = [];

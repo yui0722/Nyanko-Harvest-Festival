@@ -1,6 +1,7 @@
-//title
+var help = [res.howto1_pmg, res.howto2.png, res.howto3_png];
+var num = 0;
 
-var TitleLayer = cc.Layer.extend({
+var helpLayer = cc.Layer.extend({
     ctor: function() {
         this._super();
         var size = cc.director.getWinSize();
@@ -45,22 +46,11 @@ var TitleLayer = cc.Layer.extend({
     },
     onTouchMoved: function(touch, event) {},
     onTouchEnded: function(touch, event) {
-        cc.director.runScene(new gameScene());
+        num++;
+        if(num < 3){
+          num = 0;
+          cc.director.runScene(new TitleLayer());
+        }
+        help_png.setTexture(help[num]);
     },
-});
-var TitleScene = cc.Scene.extend({
-    onEnter: function() {
-        this._super();
-
-        // 背景レイヤーをその場で作る
-
-        var backgroundLayer = cc.Sprite.create(res.title_bg_png);
-        backgroundLayer.setPosition(240,180);
-        this.addChild(backgroundLayer);
-
-        //ラベルとタップイベント取得
-        var layer3 = new TitleLayer();
-        this.addChild(layer3);
-
-    }
 });
